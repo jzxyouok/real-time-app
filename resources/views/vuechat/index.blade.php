@@ -9,17 +9,17 @@
     
 </head>
 <body>
-    <h1>Real time chat app using vue and pusher</h1>
+    <h1 class="text-center">Real time chat app using vue and pusher</h1>
     <div id="userToggle" class="row">
-        <div v-for="user in users" class="col-md-4">
+        <div v-for="user in users" class="col-md-3 col-md-offset-1">
             <user :user="user"><user>
         </div>
 
         <template id="user-toggle-template">
-            <p>@{{ user.status }}</p>
+            <p>(@{{ user.status }})</p>
             <button @click="setStatus" type="button" class="btn btn-danger btn-lg">@{{ user.name }}</button>
         </template>
-    </div>
+    
 
     <div class="row">       
         <div class="col-md-6 panel panel-success nopadding ">
@@ -27,41 +27,34 @@
                 <h4 class="titletextgreen">Online Users</h4>  
             </div>
             <div class="panel-body">
-              <!--User Media Goes Here -->
+                <!--User Media Goes Here -->
+                <div v-for="user in users" class="media" v-show="user.status === 'Online' ">
+                    <status :user="user"></status>
+                </div>
             </div>
         </div>
+
+        <template id="logged-in-status">     
+            <a class="pull-left" href="">
+                <img class="media-object" alt="" src="/images/profile.png">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading"><a href="">@{{ user.name }}</a></h4>
+            </div>
+        </template>
+
         <div class="col-md-6 panel panel-danger nopadding ">
             <div class="panel-heading">
                 <h4 class="titletextgreen">Offline Users</h4>  
             </div>
             <div class="panel-body">
-                <div class="media">
-                    <a class="pull-left" href="">
-                        <img class="media-object" alt="" src="/images/profile.png">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><a href="">User 1</a></h4>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="">
-                        <img class="media-object" alt="" src="/images/profile.png">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><a href="">User 2</a></h4>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="">
-                        <img class="media-object" alt="" src="/images/profile.png">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><a href="">User 3</a></h4>
-                    </div>
+                <div v-for="user in users" class="media" v-show="user.status === 'Offline' ">
+                    <status :user="user"></status>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <div class="row">
         <div class="col-md-4">
@@ -97,18 +90,23 @@
 
                     methods: {
                         setStatus: function () {
-                            if(this.user.status === 'Online') {
-                                this.user.status ==='Offline'
+                            if(this.user.status == 'Online') {
+                                this.user.status = 'Offline';
                             }
-
-                            if(this.user.status === 'Offline'){
-                                this.user.status = 'Online'    
+                            
+                            else if(this.user.status == 'Offline'){
+                                this.user.status = 'Online';   
                             }
                         }
                     }
+                },
+
+                status: {
+                    template: '#logged-in-status',
+
+                    props: ['user']
                 }
             }
-
         });
     </script>
 
