@@ -25,4 +25,14 @@ Route::post('activities/like', 'ActivityController@postLike');
 Route::controller('chat', 'ChatController');
 Route::resource('vuechat', 'VueChatController');
 
+Route::get('about', [
+	'uses' => 'VueChatController@aboutIndex',
+	'as' => 'vuechat.about',
+]);
+
+Route::get('contact', [
+	'uses' => 'VueChatController@contactIndex',
+	'as' => 'vuechat.contact',
+]);
+
 Route::controller('notifications', 'NotificationController');

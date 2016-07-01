@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Laravel</title>
-        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic" rel="stylesheet" type="text/css">
+<head>
+	<title>Home Page</title>
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="http://d3dhju7igb20wy.cloudfront.net/assets/0-4-0/all-the-things.css" />
-
-    </head>
-    <body>
-        <nav class="navbar navbar-default" role="navigation">
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -16,7 +15,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="" width=41 height=30></a>
+                    <a class="navbar-brand" href="#"><img src="img/logo.png" width=41 height=30></a>
                 </div>
                 
                 <div id="navbar" class="navbar-collapse collapse">
@@ -30,18 +29,16 @@
                 </div>
             </div>
         </nav>
-    
-    <div id="app">
-        <a v-link="{ path: '/' }"><h1>Our company</h1></a>
-        <ul class="navigation">
-            <li><a v-link="{ name: 'people.show', params: {personId: 5 }}">Person 5</a></li>
-        </ul>
+	
+	<div id="app">
+  		<a v-link="{ path: '/about' }"><h1>Our company</h1></a>
+  		<ul class="navigation">
+    		<li><a v-link="{ path: '/people' }">People</a></li>
+  		</ul>
 
-        <router-view></router-view>
-    </div>
-    </body>
+  		<router-view></router-view>
+	</div>
 
-<script src="js/app.js"></script>
-    
-
+	<script src="js/app.js"></script>
+</body>
 </html>

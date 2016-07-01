@@ -12,4 +12,19 @@ class VueChatController extends Controller
     {
     	return view('vuechat.index');
     }
+
+    public function show()
+    {
+    	
+    }
+
+    public function aboutIndex()
+    {
+    	return view('vuechat.about');
+    }
+
+    public function contactIndex()
+    {
+    	return view('vuechat.contact');
+    }
 }
