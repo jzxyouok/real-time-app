@@ -6,9 +6,39 @@
 
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="http://d3dhju7igb20wy.cloudfront.net/assets/0-4-0/all-the-things.css" />
+    <style>
+         /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    </style>
 
 </head>
 <body>
+<div id="wrap">
     <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -18,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/logo.png" width=41 height=30></a>
+                    <a class="navbar-brand" href="#"><img src="" width=41 height=30></a>
                 </div>
                 
                 <div id="navbar" class="navbar-collapse collapse">
@@ -33,6 +63,7 @@
             </div>
 
         </nav>
+    
     <h1 class="text-center">Real time chat app using vue and pusher</h1>
     <div id="userToggle" class="row">
         <div v-for="user in users" class="col-md-3 col-md-offset-1">
@@ -63,7 +94,7 @@
                 <img class="media-object" alt="" src="/images/profile.png">
             </a>
             <div class="media-body">
-                <h4 class="media-heading"><a href="">@{{ user.name }}</a></h4>
+                <h4 class="media-heading"><a @click="setChatBox">@{{ user.name }}</a></h4>
             </div>
         </template>
 
@@ -80,8 +111,10 @@
     </div>
 </div>
 
-    <div class="row">
-        <div class="col-md-4">
+
+    <div id="footer">
+      <div class="container">
+            <div class="col-md-4">
             <p><a href="">User 1 <i class="fa fa-caret-up" aria-hidden="true"></i></a></p>
         </div>
         <div class="col-md-4">
@@ -90,7 +123,10 @@
         <div class="col-md-4">
             <p><a href="">User 1 <i class="fa fa-caret-up" aria-hidden="true"></i></a></p>
         </div>
+      </div>
     </div>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 
@@ -128,14 +164,32 @@
                 status: {
                     template: '#logged-in-status',
 
-                    props: ['user']
+                    props: ['user'],
+
+                    methods: {
+                        setChatBox: function() {
+                            alert(this.user.name + ' is currently ' + this.user.status);
+                        }
+                    }
+                }
+
+                chatbox: {
+                    template: '#chatbox',
+
+                    props: ['user'],
+
+                    methods: {
+                        showChat: function() {
+                            
+                        }
+                    }
                 }
             }
         });
     </script>
 
  <!-- CHAT BOX -->
-    <!-- <div class="row">
+    <!-- <div class="row" id="chatbox">
          <div class="chat-panel panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i>
