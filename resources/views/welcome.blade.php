@@ -30,11 +30,11 @@
                 </div>
             </div>
         </nav>
-    
+    <!-- { name: 'people.show', params: {personId: 5 }} -->
     <div id="app">
         <a v-link="{ path: '/' }"><h1>Our company</h1></a>
         <ul class="navigation">
-            <li><a v-link="{ name: 'people.show', params: {personId: 5 }}">Person 5</a></li>
+            <li><a v-link="{ path: '/people' }">Person 5</a></li>
         </ul>
 
         <router-view></router-view>

@@ -76,6 +76,10 @@
 
         </div>
     </div>
+
+    <div>
+        <h1>logged in users</h1>
+    </div>
 </section>
 
 <script id="chat_message_template" type="text/template">
@@ -147,6 +151,8 @@
         messages.scrollTop(messages[0].scrollHeight);
     }
 
+
+
     // Creates an activity element from the template
     function createMessageEl() {
         var text = $('#chat_message_template').text();
@@ -160,7 +166,7 @@
 
     var pusher = new Pusher('{{env("PUSHER_KEY")}}');
 
-    var channel = pusher.subscribe('{{$chatChannel}}');
+    var channel = pusher.subscribe('{{$loggedIn}}');
     channel.bind('new-message', addMessage);
 
 </script>

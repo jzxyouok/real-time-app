@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use App\User;
 
 Route::get('bridge', function() {
     $pusher = App::make('pusher');
@@ -23,7 +24,14 @@ Route::controller('activities', 'ActivityController');
 Route::post('activities/status-update', 'ActivityController@postStatusUpdate');
 Route::post('activities/like', 'ActivityController@postLike');
 Route::controller('chat', 'ChatController');
+
+
+
 Route::resource('vuechat', 'VueChatController');
+
+Route::get('api/friends', function() {
+    return User::findOrFail([2,3,4]);
+});
 
 Route::get('about', [
 	'uses' => 'VueChatController@aboutIndex',

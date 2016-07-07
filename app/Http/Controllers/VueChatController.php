@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\User;
 
 class VueChatController extends Controller
 {
+
     public function index()
     {
-    	return view('vuechat.index');
+        $user = User::where('id', 1)->firstOrFail();
+        $friends = User::findOrFail([2,3,4]);
+
+    	return view('vuechat.index')
+        ->with('user', $user)
+        ->with('friends', $friends);
     }
 
     public function show()
