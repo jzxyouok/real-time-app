@@ -6,6 +6,8 @@
 
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="http://d3dhju7igb20wy.cloudfront.net/assets/0-4-0/all-the-things.css" />
+    <meta id="csrf_token" name="csrf_token" content="{{ csrf_token() }}">
+    
     <style>
          /* Wrapper for page content to push down footer */
       #wrap {

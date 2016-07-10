@@ -1,8 +1,11 @@
 var Vue = require('vue');
 
 import Friends from './components/Friends.vue';
+import Pusher from 'pusher-js';
 
 Vue.use(require('Vue-resource'));
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf_token');
 
 new Vue({
 	el: 'body',
@@ -10,7 +13,11 @@ new Vue({
 	components: { Friends }, //<friends>
 
 	ready() {
-		alert('ready to go');
+		this.pusher = new Pusher('7da587dde248e6fd1121');
+		this.pusherChannel = this.pusher.subscribe('presence_channel');
+		this.pusherChannel.bind('App\\Events\\UserEvent', function(message){
+			console.log(message);		
+		});
 	}
 });
 

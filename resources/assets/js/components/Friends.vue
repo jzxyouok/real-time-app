@@ -1,9 +1,8 @@
 <template>
-	<div v-for="friend in list" class="col-md-3 col-md-offset-1">
+	<div v-for="friend in list" class="col-md-3 col-md-offset-1">	
             <p v-show="friend.online_status === 0">(Offline)</p>
             <p v-show="friend.online_status === 1">(Online)</p>
-
-            <button type="button" class="btn btn-danger btn-lg">{{ friend.name }}</button>
+            <button @click="subscribeToChannel" type="button" class="btn btn-danger btn-lg" v-model="userName">{{ friend.name }}</button>
         </div>
 </template>
 
@@ -12,7 +11,8 @@
 export default  {
 	data() {
 		return {
-			list: []
+			list: [],
+			userName: ''
 		};
 	},
 
@@ -27,6 +27,11 @@ export default  {
 			}, (friends) => {
 				//error callback
 			});
+		},
+		subscribeToChannel: function() {
+			this.pusher = new Pusher('7da587dde248e6fd1121');
+			this.pusherChannel = this.pusher.subscribe('test_channel');
+			console.log(userName);
 		}
 	}
 }
