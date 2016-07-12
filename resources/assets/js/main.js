@@ -14,7 +14,7 @@ new Vue({
 
 	ready() {
 		this.pusher = new Pusher('7da587dde248e6fd1121');
-		this.pusherChannel = this.pusher.subscribe('presence_channel');
+		this.pusherChannel = this.pusher.subscribe('test-channel');
 		this.pusherChannel.bind('App\\Events\\UserEvent', function(message){
 			console.log(message);		
 		});

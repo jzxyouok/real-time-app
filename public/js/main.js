@@ -15880,7 +15880,7 @@ exports.default = {
 	}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\t<div v-for=\"friend in list\" class=\"col-md-3 col-md-offset-1\">\t\n            <p v-show=\"friend.online_status === 0\">(Offline)</p>\n            <p v-show=\"friend.online_status === 1\">(Online)</p>\n            <button @click=\"subscribeToChannel\" type=\"button\" class=\"btn btn-danger btn-lg\" v-model=\"userName\">{{ friend.name }}</button>\n        </div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\t<div v-for=\"friend in list\" class=\"col-md-3 col-md-offset-1\">\t\n            <p v-show=\"friend.online_status === 0\">(Offline)</p>\n            <p v-show=\"friend.online_status === 1\">(Online)</p>\n            <button @click=\"subscribeToChannel\" type=\"button\" class=\"btn btn-danger btn-lg\">{{ friend.name }}</button>\n        </div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -15917,7 +15917,7 @@ new Vue({
 
 	ready: function ready() {
 		this.pusher = new _pusherJs2.default('7da587dde248e6fd1121');
-		this.pusherChannel = this.pusher.subscribe('presence_channel');
+		this.pusherChannel = this.pusher.subscribe('test-channel');
 		this.pusherChannel.bind('App\\Events\\UserEvent', function (message) {
 			console.log(message);
 		});
